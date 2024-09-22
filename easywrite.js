@@ -289,6 +289,7 @@ function video(video) {
         // Append custom controls after the video element in the DOM
         videoelm.after(controls);
     }
+    videoelm.appendChild(video.appendChild);
 
     return videoelm;
 }
@@ -300,4 +301,57 @@ function getRandomColor() {
       color += letters[Math.floor(Math.random() * 16)];
     }
     return color;
+}
+
+function youtubepaste(url, APC, width, height) {
+    const video = document.createElement('iframe');
+    let urltopaste = url.slice('https://www.youtube.com/watch?v='.length);
+    video.src = 'https://www.youtube.com/embed/' + urltopaste;
+    video.width = width;
+    video.height = height;
+    log(video);
+    APC.appendChild(video);
+}
+
+// function YoutubeSearch(prompt) {
+//     const url = "https://www.youtube.com/results?search_query=" + prompt;
+//     return url
+// }
+
+// function YoutubeSearch(prompt, apiKey) {
+//     // Number of results to fetch
+//     const maxResults = 10;
+
+//     // YouTube API endpoint
+//     const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${encodeURIComponent(prompt)}&type=video&key=${apiKey}&maxResults=${maxResults}`;
+
+//     // Fetching data from the API
+//     fetch(apiUrl)
+//     .then(response => {
+//         if (!response.ok) {
+//         throw new Error('Network response was not ok');
+//         }
+//         return response.json();
+//     })
+//     .then(data => {
+//         // Display search results
+//         console.log('Search Results:', data.items);
+        
+//         // Example: Show video titles in the console
+//         data.items.forEach(item => {
+//         console.log(`Title: ${item.snippet.title}`);
+//         console.log(`Video URL: https://www.youtube.com/watch?v=${item.id.videoId}`);
+//         });
+//     })
+//     .catch(error => {
+//         console.error('Error fetching data:', error);
+//     });
+// }
+function BingSearch(prompt) {
+    const url = "https://www.bing.com/search?q=" + prompt;
+    return url
+}
+function copilotSearch(prompt) {
+    const url = "https://copilot.live/search?q=" + prompt;
+    return url
 }
